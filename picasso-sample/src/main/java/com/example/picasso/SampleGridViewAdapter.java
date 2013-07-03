@@ -39,7 +39,7 @@ final class SampleGridViewAdapter extends BaseAdapter {
 
     // Trigger the download of the URL asynchronously into the image view.
     Picasso.with(context) //
-        .load(url) //
+        .load(urls.get(0)) //
         .placeholder(R.drawable.placeholder) //
         .error(R.drawable.error) //
         .transform(cropSquare) //

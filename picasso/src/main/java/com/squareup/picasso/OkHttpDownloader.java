@@ -69,10 +69,10 @@ public class OkHttpDownloader implements Downloader {
    */
   public OkHttpDownloader(final File cacheDir, final int maxSize) {
     this(new OkHttpClient());
-    try {
-      client.setResponseCache(new HttpResponseCache(cacheDir, maxSize));
-    } catch (IOException ignored) {
-    }
+    //try {
+    //  client.setResponseCache(new HttpResponseCache(cacheDir, maxSize));
+    //} catch (IOException ignored) {
+    //}
   }
 
   /**

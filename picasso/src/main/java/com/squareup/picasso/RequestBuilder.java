@@ -296,10 +296,12 @@ public class RequestBuilder {
       return null;
     }
 
+    // TODO jfwepojfwe
     Request request =
         new Request(picasso, uri, resourceId, null, options, transformations, skipCache, false, 0,
-            null);
-    return picasso.resolveRequest(request);
+            null, null);
+    //return picasso.resolveRequest(request);
+    return null;
   }
 
   /**
@@ -334,10 +336,13 @@ public class RequestBuilder {
 
     boolean hasItemToLoad = uri != null || resourceId != 0;
 
+    // TODO?
+    String requestKey = createKey(uri, resourceId, options, transformations);
+
     if (hasItemToLoad) {
       // Look for the target bitmap in the memory cache without moving to a background thread.
-      String requestKey = createKey(uri, resourceId, options, transformations);
-      Bitmap bitmap = picasso.quickMemoryCacheCheck(target, uri, requestKey);
+      //Bitmap bitmap = picasso.quickMemoryCacheCheck(target, uri, requestKey);
+      Bitmap bitmap = null;
       if (bitmap != null) {
         PicassoDrawable.setBitmap(target, picasso.context, bitmap, MEMORY, noFade,
             picasso.debugging);
@@ -355,7 +360,7 @@ public class RequestBuilder {
     if (hasItemToLoad) {
       Request request =
           new Request(picasso, uri, resourceId, target, options, transformations, skipCache, noFade,
-              errorResId, errorDrawable);
+              errorResId, errorDrawable, requestKey);
       picasso.submit(request);
     } else {
       picasso.cancelRequest(target);
@@ -372,15 +377,17 @@ public class RequestBuilder {
     }
 
     String requestKey = createKey(uri, resourceId, options, transformations);
-    Bitmap bitmap = picasso.quickMemoryCacheCheck(target, uri, requestKey);
+    //Bitmap bitmap = picasso.quickMemoryCacheCheck(target, uri, requestKey);
+    Bitmap bitmap = null;
     if (bitmap != null) {
       target.onSuccess(bitmap);
       return;
     }
 
-    Request request =
-        new TargetRequest(picasso, uri, resourceId, target, strong, options, transformations,
-            skipCache);
-    picasso.submit(request);
+    //Request request =
+    //    new TargetRequest(picasso, uri, resourceId, target, strong, options, transformations,
+    //        skipCache);
+
+    //picasso.submit(request);
   }
 }
